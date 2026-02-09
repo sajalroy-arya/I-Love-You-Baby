@@ -27,6 +27,10 @@ body {
   overflow-x: hidden;
 }
 
+body.is-locked {
+  overflow: hidden;
+}
+
 button {
   font-family: inherit;
   border: none;
@@ -41,14 +45,14 @@ a {
 }
 
 .page {
-  opacity: 0;
-  pointer-events: none;
+  opacity: 1;
+  pointer-events: auto;
   transition: opacity 0.6s ease;
 }
 
-.page.is-visible {
-  opacity: 1;
-  pointer-events: auto;
+.page.is-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .eyebrow {
@@ -377,6 +381,13 @@ a {
   z-index: 10;
   padding: 2rem;
   text-align: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.opening.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .opening__content {

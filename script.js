@@ -19,10 +19,10 @@ const formatDaysTogether = () => {
 };
 
 const revealPage = () => {
-  opening.style.display = "none";
-  page.classList.add("is-visible");
+  opening.classList.add("is-hidden");
+  page.classList.remove("is-hidden");
   page.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "auto";
+  document.body.classList.remove("is-locked");
 };
 
 enterButton.addEventListener("click", () => {
@@ -31,7 +31,8 @@ enterButton.addEventListener("click", () => {
 
 window.addEventListener("load", () => {
   formatDaysTogether();
-  document.body.style.overflow = "hidden";
+  document.body.classList.add("is-locked");
+  page.classList.add("is-hidden");
 });
 
 musicToggle.addEventListener("click", () => {

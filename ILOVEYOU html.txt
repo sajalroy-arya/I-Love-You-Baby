@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CORE VARIABLES --- */
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #141414;
+            --text-main: #e5e5e5;
+            --text-muted: #a3a3a3;
+            --accent-red: #ff4b4b; /* Soft, romantic red */
+            --accent-glow: rgba(255, 75, 75, 0.4);
+            --font-main: 'Montserrat', sans-serif;
+            --font-hand: 'Patrick Hand', cursive;
+        }
+
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- UTILITIES --- */
+        .hidden { display: none !important; opacity: 0; }
+        .fade-in { animation: fadeIn 1.2s ease-in-out forwards; }
+        .handwritten { font-family: var(--font-hand); color: var(--accent-red); letter-spacing: 1px; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- 1. OPENING SCREEN --- */
+        #intro-screen {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            z-index: 999;
+        }
+
+        #intro-screen h1 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 300; }
+        #intro-screen p { color: var(--text-muted); margin-bottom: 30px; font-style: italic; }
+
+        .btn-primary {
+            background: transparent;
+            border: 2px solid var(--accent-red);
+            color: var(--text-main);
+            padding: 12px 30px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-red);
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: scale(1.05);
+        }
+
+        /* --- 2. PROFILE GATE --- */
+        #profile-gate {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-title { font-size: 2rem; margin-bottom: 10px; }
+        .profile-sub { color: var(--text-muted); margin-bottom: 40px; font-family: var(--font-hand); font-size: 1.2rem; }
+
+        .profiles-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .profile-card {
+            width: 150px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover { transform: scale(1.1); }
+        .profile-card:hover .profile-img { border-color: var(--text-main); box-shadow: 0 0 15px var(--accent-glow); }
+
+        .profile-img {
+            width: 100%;
+            height: 150px;
+            background-color: #333; /* Placeholder Color */
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            margin-bottom: 10px;
+            transition: border 0.3s ease;
+        }
+
+        .profile-name { color: var(--text-muted); font-size: 0.9rem; transition: color 0.3s; }
+        .profile-card:hover .profile-name { color: var(--text-main); font-weight: bold; }
+
+        /* --- 3. MAIN STORY CONTENT --- */
+        #main-content { opacity: 0; transition: opacity 1s ease; }
+        
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), #0a0a0a), 
+                        url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=2070&auto=format&fit=crop'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 50px;
+        }
+
+        .hero-text h1 { font-size: 3.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); line-height: 1.1; }
+        .hero-text p { font-size: 1.2rem; margin-top: 10px; font-family: var(--font-hand); }
+
+        /* General Sections */
+        .section { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
+        .section-title { font-size: 2rem; margin-bottom: 40px; border-left: 4px solid var(--accent-red); padding-left: 20px; }
+
+        /* A. Text Block */
+        .text-block p { font-size: 1.1rem; line-height: 1.8; color: #ccc; margin-bottom: 20px; }
+
+        /* B. Things I Love (Grid) */
+        .love-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .love-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #222;
+            transition: transform 0.3s;
+        }
+
+        .love-card:hover { transform: translateY(-5px); border-color: var(--accent-red); }
+        .love-card h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--text-main); }
+        .love-card p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* C. Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item { position: relative; overflow: hidden; border-radius: 8px; cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
+        
+        .caption-layer {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 20px; opacity: 0; transition: opacity 0.3s;
+        }
+        .gallery-item:hover .caption-layer { opacity: 1; }
+
+        /* D. Timer */
+        .timer-box {
+            text-align: center;
+            background: #111;
+            padding: 50px;
+            border: 1px solid #333;
+            border-radius: 10px;
+        }
+        #time-count { font-size: 2.5rem; font-weight: 900; color: var(--accent-red); margin: 20px 0; }
+
+        /* E. Letter */
+        .letter-container {
+            background: #1a1a1a;
+            padding: 40px;
+            font-family: var(--font-hand);
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: #ddd;
+            position: relative;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .cursor { display: inline-block; width: 2px; height: 1.2em; background-color: var(--accent-red); animation: blink 1s infinite; }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* F. Goofy Stats */
+        .stat-row { margin-bottom: 20px; }
+        .stat-label { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .progress-bg { width: 100%; height: 10px; background: #333; border-radius: 5px; }
+        .progress-fill { height: 100%; background: var(--accent-red); border-radius: 5px; width: 0; transition: width 1.5s ease; }
+
+        /* Footer */
+        footer { padding: 50px; text-align: center; color: #555; font-size: 0.8rem; }
+
+        /* Music Toggle */
+        .music-toggle {
+            position: fixed; bottom: 20px; right: 20px;
+            width: 50px; height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+        .bar { width: 3px; background: var(--accent-red); margin: 0 2px; animation: sound 0ms -800ms linear infinite alternate; }
+        .playing .bar { animation-duration: 400ms; }
+        @keyframes sound { 0% { height: 5px; } 100% { height: 20px; } }
+
+        /* Mobile tweaks */
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 2.5rem; }
+            .profiles-container { gap: 10px; }
+            .profile-card { width: 45%; }
+            .section { padding: 50px 20px; }
+        }
+
+        /* Heart Click Animation */
+        .heart-click {
+            position: fixed; pointer-events: none;
+            color: var(--accent-red); font-size: 20px;
+            animation: floatUp 1s ease-out forwards;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="intro-screen">
+        <h1>Before you continue...</h1>
+        <p>This was made only for you. No refunds. No escapes.</p>
+        <button class="btn-primary" onclick="enterSite()">Okay okay, show me ❤️</button>
+    </div>
+
+    <div id="profile-gate" class="hidden">
+        <h2 class="profile-title">Who's watching our story?</h2>
+        <p class="profile-sub">Warning: Cringe, love, and bad decisions ahead.</p>
+        
+        <div class="profiles-container">
+            <div class="profile-card" onclick="startStory()">
+                <div class="profile-img" style="background-image: url('https://placehold.co/150x150/222/999?text=US');"></div>
+                <div class="profile-name">The Couple</div>
+            </div>
+            
+            <div class="profile-card" onclick="startStory()">
+                <div class="profile-img" style="background-image: url('https://placehold.co/150x150/222/999?text=YOU');"></div>
+                <div class="profile-name">Cutest Human</div>
+            </div>
+
+            <div class="profile-card" onclick="startStory()">
+                <div class="profile-img" style="background-image: url('https://placehold.co/150x150/222/999?text=CHAOS');"></div>
+                <div class="profile-name">Our Chaos</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-content" class="hidden">
+        
+        <header class="hero">
+            <div class="hero-text">
+                <h1>How We Accidentally<br>Fell in Love</h1>
+                <p class="handwritten">Episode 1: The Beginning of Forever</p>
+            </div>
+        </header>
+
+        <section class="section text-block">
+            <h2 class="section-title">The Origin Story</h2>
+            <p>
+                It started with a simple hello, or maybe it was an awkward glance. Honestly, I didn't think much of it at the time. 
+                But then we kept talking. And laughing. And suddenly, my day felt incomplete if I didn't hear your voice.
+            </p>
+            <p>
+                I don't know the exact moment things changed, but looking back, it feels like the universe conspired to push us together.
+                Even when you're annoying, you're my favorite person to be annoyed by.
+            </p>
+            <p class="handwritten" style="text-align: right; margin-top: 20px;">— Still can’t believe this actually worked.</p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Why You?</h2>
+            <div class="love-grid">
+                <div class="love-card">
+                    <h3>Your Smile</h3>
+                    <p>It’s actually illegal how much it brightens my day. Please stop, it’s distracting.</p>
+                </div>
+                <div class="love-card">
+                    <h3>Your Worst Jokes</h3>
+                    <p>They are terrible. Absolutely awful. But I laugh anyway because you look so proud of them.</p>
+                </div>
+                <div class="love-card">
+                    <h3>How You Care</h3>
+                    <p>The way you worry about the little things. It makes me feel safer than I’ve ever been.</p>
+                </div>
+                <div class="love-card">
+                    <h3>Your Coffee Order</h3>
+                    <p>It’s complicated and high maintenance, just like you. And I love it.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Evidence</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=1887&auto=format&fit=crop" alt="Memory 1">
+                    <div class="caption-layer">
+                        <p class="handwritten">That time we got lost.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1887&auto=format&fit=crop" alt="Memory 2">
+                    <div class="caption-layer">
+                        <p class="handwritten">You looked cute, I looked tired.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=1888&auto=format&fit=crop" alt="Memory 3">
+                    <div class="caption-layer">
+                        <p class="handwritten">Best date ever.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="timer-box">
+                <p class="handwritten">We have survived each other for:</p>
+                <div id="time-count">000 Days</div>
+                <p style="color: #666; font-size: 0.9rem;">And somehow, I still like you.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Things I Tolerate</h2>
+            <div class="stat-row">
+                <div class="stat-label"><span>Your Playlist Choices</span> <span>10%</span></div>
+                <div class="progress-bg"><div class="progress-fill" style="width: 10%;"></div></div>
+            </div>
+            <div class="stat-row">
+                <div class="stat-label"><span>Stealing My Hoodies</span> <span>100%</span></div>
+                <div class="progress-bg"><div class="progress-fill" style="width: 100%;"></div></div>
+            </div>
+            <div class="stat-row">
+                <div class="stat-label"><span>Cuteness Overload</span> <span>500%</span></div>
+                <div class="progress-bg"><div class="progress-fill" style="width: 100%;"></div></div> </div>
+        </section>
+
+        <section class="section">
+            <div class="letter-container">
+                <p>
+                    To my favorite person,<br><br>
+                    This is just a small digital corner to remind you that you are loved. 
+                    Through the chaos, the quiet moments, and everything in between... 
+                    <br><br>
+                    If I had to choose again, I’d still find you.
+                    <span class="cursor"></span>
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            <p>This isn’t a website. It’s my heart, poorly organized.</p>
+            <p style="margin-top:10px; opacity: 0.5;">Happy Anniversary / Birthday / Just Because</p>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"> 
+    </audio>
+
+    <div class="music-toggle" onclick="toggleMusic()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <script>
+        // --- CONFIGURATION ---
+        // EDIT: Set your start date here (Year, Month (0-11), Day)
+        const startDate = new Date(2022, 1, 14); // Feb 14, 2022
+
+        // --- DOM ELEMENTS ---
+        const introScreen = document.getElementById('intro-screen');
+        const profileGate = document.getElementById('profile-gate');
+        const mainContent = document.getElementById('main-content');
+        const music = document.getElementById('bg-music');
+        const musicBars = document.querySelector('.music-toggle');
+
+        // --- NAVIGATION FUNCTIONS ---
+        function enterSite() {
+            introScreen.classList.add('hidden');
+            profileGate.classList.remove('hidden');
+            profileGate.classList.add('fade-in');
+        }
+
+        function startStory() {
+            profileGate.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            mainContent.style.opacity = 1;
+            
+            // Auto play music (browser policy might block this without interaction, 
+            // but since user clicked a profile, it should work)
+            toggleMusic(true);
+            
+            // Trigger specific animations
+            setTimeout(() => {
+                document.querySelectorAll('.progress-fill').forEach(bar => {
+                    // Force redraw
+                    let w = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => bar.style.width = w, 100);
+                });
+            }, 500);
+        }
+
+        // --- TIMER FUNCTION ---
+        function updateTimer() {
+            const now = new Date();
+            const diff = now - startDate;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / 1000 / 60) % 60);
+            
+            document.getElementById('time-count').innerText = 
+                `${days} Days, ${hours} Hours, ${minutes} Mins`;
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer(); // Run immediately
+
+        // --- MUSIC TOGGLE ---
+        let isPlaying = false;
+        function toggleMusic(forcePlay = false) {
+            if (forcePlay || !isPlaying) {
+                music.play().then(() => {
+                    isPlaying = true;
+                    musicBars.classList.add('playing');
+                }).catch(e => console.log("Audio play blocked until interaction"));
+            } else {
+                music.pause();
+                isPlaying = false;
+                musicBars.classList.remove('playing');
+            }
+        }
+
+        // --- CLICK HEART EFFECT ---
+        document.addEventListener('click', function(e) {
+            // Don't trigger on buttons
+            if(e.target.closest('button') || e.target.closest('.profile-card')) return;
+
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart-click');
+            heart.style.left = e.clientX + 'px';
+            heart.style.top = e.clientY + 'px';
+            
+            // Random slight rotation
+            const randomRot = Math.random() * 40 - 20; 
+            heart.style.transform = `rotate(${randomRot}deg)`;
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 1000);
+        });
+
+    </script>
+</body>
+</html>

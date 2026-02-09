@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Story - A Private Universe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="floating-music" aria-label="Toggle music">
+      <button id="musicToggle" aria-pressed="false" title="Toggle music">
+        <span class="music-icon">♪</span>
+      </button>
+    </div>
+
+    <main id="page" class="page" aria-hidden="true">
+      <section class="hero" id="top">
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+          <p class="eyebrow">A private universe for</p>
+          <h1>How We Accidentally Fell in Love</h1>
+          <p class="hero__subtitle">
+            This is the part where I pretend to be cool, but you already know
+            the truth.
+          </p>
+          <div class="hero__actions">
+            <button class="primary" data-scroll="#story">Start the story</button>
+            <button class="ghost" data-scroll="#profiles">Back to profiles</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="profiles" id="profiles">
+        <div class="section__heading">
+          <h2>Who’s watching our story?</h2>
+          <p>Warning: cringe, love, and bad decisions ahead.</p>
+        </div>
+        <div class="profiles__grid">
+          <button class="profile-card" data-scroll="#story">
+            <span class="profile-card__title">Us</span>
+            <span class="profile-card__subtitle">Main Character</span>
+          </button>
+          <button class="profile-card" data-scroll="#story">
+            <span class="profile-card__title">You</span>
+            <span class="profile-card__subtitle">Cutest Human Alive</span>
+          </button>
+          <button class="profile-card" data-scroll="#story">
+            <span class="profile-card__title">Me</span>
+            <span class="profile-card__subtitle">Certified Drama</span>
+          </button>
+          <button class="profile-card" data-scroll="#story">
+            <span class="profile-card__title">Our Chaos</span>
+            <span class="profile-card__subtitle">Still a vibe</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="story" id="story">
+        <div class="section__heading">
+          <h2>Our Story</h2>
+          <p>A cinematic recap with all the feelings.</p>
+        </div>
+
+        <article class="story-block">
+          <div class="story-block__text">
+            <h3>How We Met</h3>
+            <p>
+              <!-- PERSONALIZE: Replace this paragraph with your story. -->
+              We met in the most ordinary moment, but somehow everything felt
+              like slow motion. You laughed, I forgot my lines, and suddenly the
+              universe decided it was our turn.
+            </p>
+            <span class="caption">Still can’t believe this actually worked.</span>
+          </div>
+        </article>
+
+        <article class="story-block">
+          <div class="story-block__text">
+            <h3>Things I Love About You</h3>
+            <div class="love-grid">
+              <div class="love-card">Your smile (illegal honestly)</div>
+              <div class="love-card">The way you get fake angry</div>
+              <div class="love-card">Your worst jokes that I still laugh at</div>
+              <div class="love-card">How you make any place feel like home</div>
+              <div class="love-card">Your dramatic storytelling voice</div>
+              <div class="love-card">The tiny dances you do without realizing</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="story-block">
+          <div class="story-block__text">
+            <h3>Our Moments</h3>
+            <p class="caption"><!-- PERSONALIZE: Swap in your favorite photos. --></p>
+            <div class="gallery">
+              <button class="gallery-item" data-caption="That night we laughed way too loud.">
+                <span class="gallery-placeholder">Photo 1</span>
+              </button>
+              <button class="gallery-item" data-caption="Proof that you make every city feel like ours.">
+                <span class="gallery-placeholder">Photo 2</span>
+              </button>
+              <button class="gallery-item" data-caption="The day we declared a truce with naps.">
+                <span class="gallery-placeholder">Photo 3</span>
+              </button>
+              <button class="gallery-item" data-caption="Our signature chaos, perfectly captured.">
+                <span class="gallery-placeholder">Photo 4</span>
+              </button>
+              <button class="gallery-item" data-caption="You + me + snacks = masterpiece.">
+                <span class="gallery-placeholder">Photo 5</span>
+              </button>
+              <button class="gallery-item" data-caption="I still replay this moment on loop.">
+                <span class="gallery-placeholder">Photo 6</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="story-block">
+          <div class="story-block__text">
+            <h3>Time Together</h3>
+            <div class="counter" id="loveCounter">
+              We’ve survived each other for <span id="daysTogether">0</span> days
+            </div>
+            <p class="caption">And somehow still choosing each other.</p>
+          </div>
+        </article>
+
+        <article class="story-block">
+          <div class="story-block__text note">
+            <h3>Private Notes</h3>
+            <p class="handwritten">
+              <!-- PERSONALIZE: Replace with your letter. -->
+              I love the way your eyes search for mine in every room. I love
+              that you call me out and still choose me. I love that we are both
+              ridiculous and still somehow make perfect sense.
+              <span class="cursor">|</span>
+            </p>
+            <p class="handwritten closing">
+              If I had to choose again, I’d still choose you.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section class="surprise" id="surprise">
+        <div class="section__heading">
+          <h2>Things I tolerate because I love you</h2>
+          <p>Yes, I still like you. No refunds.</p>
+        </div>
+        <div class="ratings">
+          <div class="rating-card">
+            <span>Cuteness</span>
+            <strong>10/10</strong>
+          </div>
+          <div class="rating-card">
+            <span>Annoying</span>
+            <strong>Also 10/10</strong>
+          </div>
+          <div class="rating-card">
+            <span>Mine</span>
+            <strong>Forever</strong>
+          </div>
+        </div>
+        <ul class="funny-list">
+          <li>Stealing the blanket (every single night).</li>
+          <li>Making me pick the movie and then falling asleep.</li>
+          <li>Existing while looking that cute. It’s honestly unfair.</li>
+        </ul>
+      </section>
+
+      <section class="end" id="end">
+        <div class="end__content">
+          <p>This isn’t a website.</p>
+          <h2>It’s my heart, poorly organized.</h2>
+          <p class="caption">Happy <span class="highlight">Anniversary</span>.</p>
+        </div>
+      </section>
+    </main>
+
+    <section class="opening" id="opening">
+      <div class="opening__content">
+        <p class="eyebrow">Before you continue…</p>
+        <h2>This was made only for you.</h2>
+        <p class="subtitle">No refunds. No escapes.</p>
+        <button class="primary" id="enterButton">Okay okay, show me ❤️</button>
+      </div>
+    </section>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <div class="lightbox__content">
+        <button class="lightbox__close" id="lightboxClose" aria-label="Close lightbox">×</button>
+        <div class="lightbox__image">
+          <span class="gallery-placeholder">Your Photo</span>
+        </div>
+        <p class="lightbox__caption" id="lightboxCaption"></p>
+      </div>
+    </div>
+
+    <!-- PERSONALIZE: Add your own audio file path below. -->
+    <audio id="bgMusic" src="" preload="none" loop></audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
